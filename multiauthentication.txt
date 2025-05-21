@@ -1,0 +1,34 @@
+1. config in env file
+2. add filed in user table
+3. add filed in user modal
+4. create guard for admin in auth.php file
+5. make middleware 
+
+  --> AdminRedirect
+   if(Auth::guard('admin')->check()){
+         return redirect()->route('admin.dashboard');
+      } 
+	   
+  --> AdminAuthenticate
+  
+6 . make login Controller : inside the login controller write all logics
+7 . create login and register and dashboard blade file.
+
+8 Use guest and auth middleware to control access based on whether the user is logged in or not.
+  auth → user must be logged in.
+  guest → user must be logged out.
+  
+        $middleware->alias([
+            'admin.guest' => \App\Http\Middleware\AdminRedirect::class,
+            'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
+        ]);
+
+         $middleware->redirectTo(
+            guests :  '/account/login',
+            users  : '/account/dashboard'
+         );
+9. create admin controller for admin 
+10. create dashboard controller for admin		 
+		 
+	 
+		 
